@@ -78,7 +78,7 @@ namespace Game
             if (_bubbleSize < _maxSize && collision.gameObject.tag == "BubbleJar")
             {
                 IncreaseSize();
-                Death();
+                Destroy(collision.gameObject);
             }
         }
 
@@ -93,6 +93,10 @@ namespace Game
                 collision.gameObject.GetComponent<PlayerBubble>()._destroyMe = true;
                 IncreaseSize();
 
+            }
+            if(collision.gameObject.tag == "DeathlyTouch")
+            {
+                Death();
             }
         }
 
