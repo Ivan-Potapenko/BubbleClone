@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 5463823709794086180}
   - component: {fileID: 5463823709794086181}
   - component: {fileID: 5463823709794086178}
+  - component: {fileID: 3261243370661772826}
+  - component: {fileID: 6457328711284447894}
   m_Layer: 0
   m_Name: PlayerBubbleControl
   m_TagString: Untagged
@@ -50,6 +52,10 @@ MonoBehaviour:
   _moveDirection: {fileID: 11400000, guid: 46ec106f6b1bb1b47a96e51659e8c09d, type: 2}
   _updateEventListner: {fileID: 5463823709794086181}
   _fixedUpdateEventListner: {fileID: 5463823709794086178}
+  _rotationPlayerEventDispatcher: {fileID: 3261243370661772826}
+  _playerMousePosition: {fileID: 11400000, guid: b1d54837329627f48bc47e16f8bb9d8c,
+    type: 2}
+  _shootEventDispatcher: {fileID: 6457328711284447894}
 --- !u!114 &5463823709794086180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89,3 +95,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _someEvent: {fileID: 11400000, guid: b9ab8f79f230e8840b82d3cd460041cf, type: 2}
+--- !u!114 &3261243370661772826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5463823709794086177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b617d05a0c2ab7942b9d22b08e9b0a86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _someEvent: {fileID: 11400000, guid: b2954827bc3dfa94082dec62abdfe403, type: 2}
+--- !u!114 &6457328711284447894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5463823709794086177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b617d05a0c2ab7942b9d22b08e9b0a86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _someEvent: {fileID: 11400000, guid: 11ec993e36b69b048bc22078c1d6ac34, type: 2}

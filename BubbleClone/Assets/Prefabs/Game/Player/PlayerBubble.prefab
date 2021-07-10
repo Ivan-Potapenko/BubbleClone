@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3898275427355676461
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5282465818467261725}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5282465818467261725
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3898275427355676461}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.465, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5875255375778948259}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8267045083659876234
 GameObject:
   m_ObjectHideFlags: 0
@@ -14,9 +44,11 @@ GameObject:
   - component: {fileID: 3011433824224542942}
   - component: {fileID: 3737935560149461719}
   - component: {fileID: 3634698724370713990}
+  - component: {fileID: 3055094325531162826}
+  - component: {fileID: 947262385788250518}
   m_Layer: 0
   m_Name: PlayerBubble
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74,7 +106,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 8a637a8049deb874fa7312b765313e93, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.095185116, g: 0.6509434, b: 0.64487714, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -136,7 +168,20 @@ MonoBehaviour:
   _speed: 0.1
   _moveDirection: {fileID: 11400000, guid: 46ec106f6b1bb1b47a96e51659e8c09d, type: 2}
   _moveEventListner: {fileID: 3634698724370713990}
-  _maxVelocity: 2
+  _maxVelocity: 3
+  _mousePosition: {fileID: 11400000, guid: b1d54837329627f48bc47e16f8bb9d8c, type: 2}
+  _rotationPlayerEventListner: {fileID: 3055094325531162826}
+  _bulletSpawnGameObject: {fileID: 3898275427355676461}
+  _shootEventListner: {fileID: 947262385788250518}
+  _bullet: {fileID: 4255489218359669990, guid: a8cfdca761206424bb44ab521d6ed9bf, type: 3}
+  _bubbleSize: 0
+  _bubbleScales:
+  - 1
+  - 2
+  _bubbleGravityScales:
+  - 0.3
+  - -0.3
+  _maxSize: 1
 --- !u!114 &3634698724370713990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,6 +195,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _someEvent: {fileID: 11400000, guid: 6b2717b05974ef94b848eec7a5878a1a, type: 2}
+--- !u!114 &3055094325531162826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8267045083659876234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 354e4c07d726d1d469e3c2679c4c4058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _someEvent: {fileID: 11400000, guid: b2954827bc3dfa94082dec62abdfe403, type: 2}
+--- !u!114 &947262385788250518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8267045083659876234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 354e4c07d726d1d469e3c2679c4c4058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _someEvent: {fileID: 11400000, guid: 11ec993e36b69b048bc22078c1d6ac34, type: 2}
 --- !u!1 &9127959726614069005
 GameObject:
   m_ObjectHideFlags: 0
@@ -177,7 +248,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.349, y: 0, z: 0}
   m_LocalScale: {x: 0.69609374, y: 0.117429495, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 5282465818467261725}
   m_Father: {fileID: 8267045083659876239}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

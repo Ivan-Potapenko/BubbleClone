@@ -15,11 +15,19 @@ namespace Game
 
         [SerializeField]
         private EventListener _updateEventListner;
+
         [SerializeField]
         private EventListener _fixedUpdateEventListner;
 
         [SerializeField]
+        private EventDispatcher _rotationPlayerEventDispatcher;
+
+        [SerializeField]
         private Vector2ScriptableObject _playerMousePosition;
+
+        [SerializeField]
+        private EventDispatcher _shootEventDispatcher;
+
 
         private void OnEnable()
         {
@@ -40,8 +48,13 @@ namespace Game
 
         private void MouseControl()
         {
-            var mouseVector3 = Input.mousePosition;
+            var mouseVector3 = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             _playerMousePosition.value = new Vector2(mouseVector3.x, mouseVector3.y);
+            _rotationPlayerEventDispatcher.Dispatch();
+            if(Input.GetMouseButtonDown(0))
+            {
+                _shootEventDispatcher.Dispatch();
+            }
         }
 
         private void KeybordControl()
