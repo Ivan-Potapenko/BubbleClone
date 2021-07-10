@@ -16,6 +16,9 @@ namespace Game
         [SerializeField]
         private EventListener _moveEventListner;
 
+        [SerializeField]
+        private float _maxVelocity;
+
         private Rigidbody2D _rigidbody2D;
 
         private void OnEnable()
@@ -35,21 +38,24 @@ namespace Game
 
         private void Move()
         {
-            switch(_moveDirection.direction)
+            switch (_moveDirection.direction)
             {
                 case MoveDirection.Left:
-                    MoveWithDirectionVector(new Vector2(0, -1));
+                    MoveWithDirectionVector(new Vector2(-1, 0));
                     break;
 
                 case MoveDirection.Right:
-                    MoveWithDirectionVector(new Vector2(0, 1));
+                    MoveWithDirectionVector(new Vector2(1, 0));
                     break;
             }
         }
 
-        private void MoveWithDirectionVector(Vector2 vector2)
+        private void MoveWithDirectionVector(Vector2 DirectionVector2)
         {
-
+            if (_rigidbody2D.velocity.x * DirectionVector2.x <= _maxVelocity )
+            {
+                _rigidbody2D.AddForce(DirectionVector2 * _speed, ForceMode2D.Impulse);
+            }
         }
 
     }
