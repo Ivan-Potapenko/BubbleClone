@@ -63,7 +63,7 @@ Transform:
   m_GameObject: {fileID: 8267045083659876234}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.75, y: -2.26, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_Children:
   - {fileID: 5875255375778948259}
   m_Father: {fileID: 0}
@@ -177,15 +177,15 @@ MonoBehaviour:
   _bullet: {fileID: 4255489218359669990, guid: a8cfdca761206424bb44ab521d6ed9bf, type: 3}
   _bubbleSize: 0
   _bubbleScales:
-  - 1
-  - 2
+  - 0.7
+  - 1.3
   _bubbleGravityScales:
   - 0.3
   - -0.3
   _maxSize: 1
   _jumpEventListner: {fileID: 424885878287090978}
   _onFloor: 0
-  _jumpForce: 3.5
+  _jumpForce: 2.5
   _timeShutdownOnFloor: 0.12
 --- !u!114 &3634698724370713990
 MonoBehaviour:
