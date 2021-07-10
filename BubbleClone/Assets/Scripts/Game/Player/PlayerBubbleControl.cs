@@ -28,6 +28,8 @@ namespace Game
         [SerializeField]
         private EventDispatcher _shootEventDispatcher;
 
+        [SerializeField]
+        private EventDispatcher _jumpEventDispatcher;
 
         private void OnEnable()
         {
@@ -73,6 +75,11 @@ namespace Game
             if (!(Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A)))
             {
                 _fixedUpdateEventListner.ActionsToDo -= _movePlayerBubbleEventDispatcher.Dispatch;
+            }
+
+            if(Input.GetKeyDown(KeyCode.Space))
+            {
+                _jumpEventDispatcher.Dispatch();
             }
 
         }

@@ -3,6 +3,7 @@ using Enums;
 using Events;
 using ScriptableObjects;
 using System.Collections.Generic;
+using System.Collections;
 
 namespace Game
 {
@@ -51,6 +52,18 @@ namespace Game
         [SerializeField]
         private int _maxSize;
 
+        [SerializeField]
+        private EventListener _jumpEventListner;
+
+        [SerializeField]
+        private bool _onFloor;
+
+        [SerializeField]
+        private float _jumpForce;
+
+        [SerializeField]
+        private float _timeShutdownOnFloor;
+
         private bool _destroyMe = false;
 
         private void OnEnable()
@@ -58,6 +71,7 @@ namespace Game
             _moveEventListner.ActionsToDo += Move;
             _rotationPlayerEventListner.ActionsToDo += Rotation;
             _shootEventListner.ActionsToDo += Shoot;
+            _jumpEventListner.ActionsToDo += Jump;
         }
 
         private void OnDisable()
@@ -65,6 +79,8 @@ namespace Game
             _moveEventListner.ActionsToDo -= Move;
             _rotationPlayerEventListner.ActionsToDo -= Rotation;
             _shootEventListner.ActionsToDo -= Shoot;
+            _jumpEventListner.ActionsToDo -= Jump;
+            StopCoroutine(ShutdownOnFloor());
         }
 
         void Start()
@@ -72,6 +88,24 @@ namespace Game
             _rigidbody2D = GetComponent<Rigidbody2D>();
             SetSize();
         }
+
+        private void Jump()
+        {
+            if (_onFloor)
+            {
+                if (_rigidbody2D.gravityScale > 0)
+                {
+                    _rigidbody2D.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
+                }
+                else
+                {
+                    _rigidbody2D.AddForce(Vector2.down * _jumpForce, ForceMode2D.Impulse);
+                }
+                _onFloor = false;
+            }
+
+        }
+        
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
@@ -82,6 +116,30 @@ namespace Game
             }
         }
 
+        
+
+        private void OnCollisionStay2D(Collision2D collision)
+        {
+            if (collision.gameObject.tag == "Floor")
+            {
+                _onFloor = true;
+            }
+        }
+
+        private void OnCollisionExit2D(Collision2D collision)
+        {
+            if (collision.gameObject.tag == "Floor")
+            {
+                StartCoroutine(ShutdownOnFloor());
+            }
+        }
+
+        IEnumerator ShutdownOnFloor()
+        {
+            yield return new WaitForSeconds(_timeShutdownOnFloor);
+            _onFloor = false;
+        }
+
         private void OnCollisionEnter2D(Collision2D collision)
         {
             if (_bubbleSize < _maxSize && collision.gameObject.tag == "Player")
@@ -90,13 +148,23 @@ namespace Game
                 {
                     Death();
                 }
-                collision.gameObject.GetComponent<PlayerBubble>()._destroyMe = true;
-                IncreaseSize();
+                var playerBubble = collision.gameObject.GetComponent<PlayerBubble>();
+                if (playerBubble._bubbleSize < playerBubble._maxSize)
+                {
+                    
+                    playerBubble._destroyMe = true;
+                    IncreaseSize();
+                }
 
             }
-            if(collision.gameObject.tag == "DeathlyTouch")
+            if (collision.gameObject.tag == "DeathlyTouch")
             {
                 Death();
+            }
+
+            if (collision.gameObject.tag == "Floor")
+            {
+                _onFloor = true;
             }
         }
 
@@ -122,6 +190,7 @@ namespace Game
         {
             if (_bubbleSize > 0)
             {
+                _onFloor = false;
                 _bubbleSize--;
                 SetSize();
             }
@@ -131,6 +200,7 @@ namespace Game
         {
             if (_bubbleSize < _maxSize)
             {
+                _onFloor = false;
                 _bubbleSize++;
                 SetSize();
             }
