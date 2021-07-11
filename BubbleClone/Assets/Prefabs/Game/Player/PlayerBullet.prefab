@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fixedUpdateEventListner: {fileID: 7684994340851594716}
-  _speed: 6
+  _speed: 7
   _playerBubbles: {fileID: 8267045083659876234, guid: d3568d52a5377494fb0552354a9c50c0,
     type: 3}
   _moveDirecton: {x: 0, y: 0, z: 0}
