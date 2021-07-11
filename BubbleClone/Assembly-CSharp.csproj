@@ -68,9 +68,19 @@
     <Compile Include="Assets\Scripts\Event system\EventDispatcher.cs" />
     <Compile Include="Assets\Scripts\Event system\EventListener.cs" />
     <Compile Include="Assets\Scripts\Game\Enums\MoveDirection.cs" />
+    <Compile Include="Assets\Scripts\Game\Environment\Button.cs" />
+    <Compile Include="Assets\Scripts\Game\Environment\Door.cs" />
+    <Compile Include="Assets\Scripts\Game\Environment\Geyser.cs" />
+    <Compile Include="Assets\Scripts\Game\Environment\Key.cs" />
+    <Compile Include="Assets\Scripts\Game\Managers\MusicManager.cs" />
+    <Compile Include="Assets\Scripts\Game\Managers\UIManager.cs" />
+    <Compile Include="Assets\Scripts\Game\Managers\UpdateManager.cs" />
+    <Compile Include="Assets\Scripts\Game\Player\Bullet.cs" />
     <Compile Include="Assets\Scripts\Game\Player\Direction.cs" />
     <Compile Include="Assets\Scripts\Game\Player\PlayerBubble.cs" />
     <Compile Include="Assets\Scripts\Game\Player\PlayerBubbleControl.cs" />
+    <Compile Include="Assets\Scripts\ScriptableObjects\Vector2ScriptableObject.cs" />
+    <None Include="Assets\8Bit Music Album - 051321\Notes.txt" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/MyGames/my/BubbleClone/BubbleClone/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
